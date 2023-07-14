@@ -57,6 +57,7 @@ export class CustomersService {
       );
   }
 
+
   getCustomer(id: number | undefined): Observable<Customer>{
     return this.http.get<Customer>(this.apiUrl+`/id/${id}`);
   }
@@ -74,7 +75,5 @@ export class CustomersService {
   getImageUrl(id: number | undefined) {
     return this.http.get(this.apiUrl + '/images/' + id, { responseType: 'blob' });
   }
-  login(customermodel: Customer): Observable<Loginmodel>{
-    return this.http.post<Loginmodel>(this.apiUrl+'/login', customermodel);
-  }
+
 }

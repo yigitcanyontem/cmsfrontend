@@ -12,6 +12,7 @@ export class ProfileUpdateComponent {
   customerupdatemodel: Customer={};
 
   constructor(private customerService: CustomersService,private route: ActivatedRoute, private router:Router) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   onUpdateUser(customerupdatemodel: Customer){

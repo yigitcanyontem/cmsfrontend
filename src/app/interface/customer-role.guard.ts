@@ -11,7 +11,7 @@ export class CustomerRoleGuard implements CanActivate{
   canActivate(): boolean {
     const customerRole = localStorage.getItem("customerRole")
 
-    if (customerRole === 'CUSTOMER') {
+    if (customerRole === 'CUSTOMER' || customerRole === null) {
       this.router.navigate(['']);
       return false;
     }

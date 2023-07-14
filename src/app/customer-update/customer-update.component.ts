@@ -13,7 +13,7 @@ export class CustomerUpdateComponent {
   customerId: number|undefined
 
   constructor(private customerService: CustomersService,private route: ActivatedRoute, private router:Router) {
-
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   ngOnInit(): void {

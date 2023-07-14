@@ -1,4 +1,3 @@
-
 <style>
   :host {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -300,11 +299,11 @@
         <ng-container *ngIf="customerRole === 'ADMIN'">
           <button class="btn btn-outline-light me-2" routerLink="customers/register">Add Customer</button>
           <button class="btn btn-outline-light me-2" routerLink="customers">Customers</button>
-          <button class="btn btn-outline-light me-2" (click)="logout()">Logout</button>
+          <button class="btn btn-outline-light me-2" (click)="onLogout()">Logout</button>
         </ng-container>
         <ng-container *ngIf="customerRole === 'CUSTOMER'">
           <button class="btn btn-outline-light me-2" routerLink="profile">Profile</button>
-          <button class="btn btn-outline-light me-2" (click)="logout()">Logout</button>
+          <button class="btn btn-outline-light me-2" (click)="onLogout()">Logout</button>
         </ng-container>
         <ng-container *ngIf="!customerRole">
           <button class="btn btn-outline-light" routerLink="login">Login</button>

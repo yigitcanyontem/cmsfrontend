@@ -3,6 +3,7 @@ import {CustomersService} from "../service/customers.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Customer} from "../interface/customer";
 import {Loginmodel} from "../interface/loginmodel";
+import {AuthenticationService} from "../service/authentication.service";
 
 
 
@@ -13,19 +14,11 @@ import {Loginmodel} from "../interface/loginmodel";
 })
 export class CustomerLoginComponent {
   customerloginform: Customer={};
-  constructor(private customerService: CustomersService,private route: ActivatedRoute, private router:Router) {
+  constructor(private customerService: CustomersService,private route: ActivatedRoute, private router:Router, private authService: AuthenticationService) {
   }
   onLogin(customerloginform: Customer) {
-    this.customerService.login(customerloginform).subscribe(
-      (response: Loginmodel) => {
-        localStorage.setItem('customerId', String(response.id));
-        localStorage.setItem('customerRole', response.role);
-        this.router.navigate(['home']);
-
-      },
-      (error: any) => console.log(error),
-      () => console.log('Logged In')
-    );
+    this.authService.login(customerloginform);
+    this.router.navigate(['home']);
   }
 
 
