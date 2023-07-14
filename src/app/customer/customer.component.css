@@ -1,0 +1,26 @@
+@import "node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+.customer-table {
+  width: 100%;
+
+}
+
+.customer-table td{
+  padding: 8px;
+  color: white;
+  text-align: center;
+}
+
+.customer-table td:nth-child(4), .customer-table th:nth-child(4) {
+  width: 30%;
+}
+.customer-table th{
+  color: white;
+  text-align: center;
+  background-color: #212529;
+}
+
+::ng-deep .mat-sort-header-container {
+  display:flex;
+  justify-content:center;
+}

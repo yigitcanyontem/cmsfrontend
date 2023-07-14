@@ -1,0 +1,53 @@
+<div class="container p-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card m-5 text-center text-light bg-black bg-opacity-50">
+        <div class="card-header">
+          <h1 class="display-1 text-center mt-2">Create User</h1>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="onCreateUser(customerregistermodel)" class="container" #userForm="ngForm">
+            <div>
+              <label for="firstName" class="form-label">First Name:</label>
+              <input type="text" id="firstName" name="firstName" class="form-control" size="50" [(ngModel)]="customerregistermodel.firstName" required>
+            </div>
+            <div>
+              <label for="lastName" class="form-label">Last Name:</label>
+              <input type="text" id="lastName" name="lastName" class="form-control" size="50" [(ngModel)]="customerregistermodel.lastName" required>
+            </div>
+            <div>
+              <label for="email" class="form-label">Email:</label>
+              <input type="email" id="email" name="email" class="form-control" size="50" [(ngModel)]="customerregistermodel['email']" required email>
+              <div *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched" class="text-danger">
+                Invalid email format.
+              </div>
+            </div>
+
+            <div>
+              <label for="telNo" class="form-label">Tel No:</label>
+              <input type="tel" id="telNo" name="telNo" class="form-control" size="50" [(ngModel)]="customerregistermodel['telNo']" required pattern="[0-9]{10}">
+              <div *ngIf="userForm.controls['telNo'].invalid && userForm.controls['telNo'].touched" class="text-danger">
+                Invalid phone number format. Please enter a 10-digit number.
+              </div>
+            </div>
+
+            <div>
+              <label for="gender" class="form-label">Gender:</label>
+              <select class="form-control" id="gender" name="gender" [(ngModel)]="customerregistermodel.gender" required>
+                <option value="MALE">Male</option>
+                <option value="FEMALE">Female</option>
+              </select>
+            </div>
+            <div>
+              <label for="password" class="form-label">Password:</label>
+              <input type="password" id="password" name="password" class="form-control " size="50"  [(ngModel)]="customerregistermodel.password" required>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-success mt-3 ">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

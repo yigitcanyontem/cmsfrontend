@@ -1,0 +1,40 @@
+
+<div class="mx-auto p-5">
+  <div>
+        <div>
+          <div class="text-center p-5 mx-auto table-responsive">
+            <table class="table table-dark table-striped table-fit table-bordered table-hover ">
+              <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Profile Pic</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Tel No</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr class="align-middle">
+                <th scope="row">{{customermodel.id}}</th>
+                <th scope="row">
+                  <img [src]="imageUrl" alt="a" width="75px">
+                </th>
+                <td>{{customermodel.firstName}}</td>
+                <td>{{customermodel.lastName}}</td>
+                <td>{{customermodel.email}}</td>
+                <td>{{customermodel.gender}}</td>
+                <td>{{customermodel.telNo}}</td>
+                <td><button type="button" class="btn btn-info"  routerLink="/customer/{{customermodel.id}}/update">Update</button></td>
+                <td><button type="button" class="btn btn-danger"  (click)="onDeleteUser()">Delete</button></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
