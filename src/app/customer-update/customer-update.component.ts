@@ -11,19 +11,22 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class CustomerUpdateComponent {
   customerupdatemodel: Customer={};
   customerId: number|undefined
+
   constructor(private customerService: CustomersService,private route: ActivatedRoute, private router:Router) {
+
   }
+
   ngOnInit(): void {
     this.customerId = this.customerService.customerId;
   }
   onUpdateUser(customerupdatemodel: Customer){
     console.log(this.customerId)
     this.customerService.updateUser(this.customerId,customerupdatemodel).subscribe(
-      (response) => console.log(response),
-      (error: any) => console.log(error),
-      () => console.log('Done getting users')
+      (response) => {
+        this.router.navigate(['customer/'+this.customerId]);
+      },
+      (error: any) => console.log(error)
     );
-    window.location.reload();
   }
   onFileSelected(event: any) {
     this.customerService.uploadPic(event);

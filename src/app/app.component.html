@@ -297,11 +297,22 @@
     <div class="container-fluid">
       <a class="navbar-brand text-light m-1" href="#" routerLink="">Customer Management System</a>
       <div>
-        <button class="btn btn-outline-light me-2"  routerLink="customers/register">Add Customer</button>
-        <button class="btn btn-outline-light" routerLink="customers">Customers</button>
+        <ng-container *ngIf="customerRole === 'ADMIN'">
+          <button class="btn btn-outline-light me-2" routerLink="customers/register">Add Customer</button>
+          <button class="btn btn-outline-light me-2" routerLink="customers">Customers</button>
+          <button class="btn btn-outline-light me-2" (click)="logout()">Logout</button>
+        </ng-container>
+        <ng-container *ngIf="customerRole === 'CUSTOMER'">
+          <button class="btn btn-outline-light me-2" routerLink="profile">Profile</button>
+          <button class="btn btn-outline-light me-2" (click)="logout()">Logout</button>
+        </ng-container>
+        <ng-container *ngIf="!customerRole">
+          <button class="btn btn-outline-light" routerLink="login">Login</button>
+        </ng-container>
       </div>
     </div>
   </nav>
 </div>
+
 
 <router-outlet></router-outlet>

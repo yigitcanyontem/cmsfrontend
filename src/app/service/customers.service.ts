@@ -3,6 +3,7 @@ import {map, Observable} from "rxjs";
 import {Customer} from "../interface/customer";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../environments/environments";
+import {Loginmodel} from "../interface/loginmodel";
 
 
 @Injectable({
@@ -40,6 +41,21 @@ export class CustomersService {
         }
       );
   }
+  uploadPicCustomer(event: any){
+    const file: File = event.target.files[0];
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+
+    this.http.post<any>(this.apiUrl+`/upload/${localStorage.getItem("customerId")}`, formData)
+      .subscribe(
+        response => {
+          console.log(response); // Handle the response from the backend
+        },
+        error => {
+          console.log(error); // Handle any errors
+        }
+      );
+  }
 
   getCustomer(id: number | undefined): Observable<Customer>{
     return this.http.get<Customer>(this.apiUrl+`/id/${id}`);
@@ -58,7 +74,7 @@ export class CustomersService {
   getImageUrl(id: number | undefined) {
     return this.http.get(this.apiUrl + '/images/' + id, { responseType: 'blob' });
   }
-  login(customermodel: Customer): Observable<String>{
-    return this.http.post<String>(this.apiUrl+'/login', customermodel);
+  login(customermodel: Customer): Observable<Loginmodel>{
+    return this.http.post<Loginmodel>(this.apiUrl+'/login', customermodel);
   }
 }

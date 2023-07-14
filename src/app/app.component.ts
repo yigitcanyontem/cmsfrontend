@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cmsfrontend';
+  customerRole: string | null = localStorage.getItem('customerRole');
+  customerId: string | null = localStorage.getItem('customerId');
+  constructor(private router:Router) {
+  }
+  logout() {
+    localStorage.removeItem('customerRole');
+    localStorage.removeItem('customerId');
+    this.router.navigate(['home'], {
+      skipLocationChange: true,
+      queryParamsHandling: 'merge'
+    })
+  }
 }

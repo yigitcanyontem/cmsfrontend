@@ -15,6 +15,8 @@ import {FormsModule} from "@angular/forms";
 import { CustomerUpdateComponent } from './customer-update/customer-update.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { CustomerLoginComponent } from './customer-login/customer-login.component';
+import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
+import { ProfileUpdateComponent } from './profile-update/profile-update.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { CustomerLoginComponent } from './customer-login/customer-login.componen
     CustomerUpdateComponent,
     WelcomeComponent,
     CustomerLoginComponent,
+    CustomerProfileComponent,
+    ProfileUpdateComponent
   ],
   imports: [
     BrowserModule,

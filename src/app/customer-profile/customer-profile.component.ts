@@ -1,29 +1,25 @@
-import { Component } from '@angular/core';
+import {Component} from "@angular/core";
+import {Customer} from "../interface/customer";
 import {CustomersService} from "../service/customers.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Customer} from "../interface/customer";
 
 @Component({
-  selector: 'app-customer-detail',
-  templateUrl: './customer-detail.component.html',
-  styleUrls: ['./customer-detail.component.css']
+  selector: 'app-customer-profile',
+  templateUrl: './customer-profile.component.html',
+  styleUrls: ['./customer-profile.component.css']
 })
-export class CustomerDetailComponent {
+export class CustomerProfileComponent {
   customermodel: Customer={};
   customerupdatemodel: Customer={};
-  id: number | undefined
+  // @ts-ignore
+  id = parseInt(localStorage.getItem("customerId"));
   imageUrl: string = '';
 
   constructor(private customerService: CustomersService,private route: ActivatedRoute, private router:Router) {
   }
+
   ngOnInit(): void{
-    this.route.params.subscribe(
-      params => {
-         this.id = +params['id'];
-        this.onGetUser();
-        this.customerService.customerId = this.id;
-      }
-    );
+    this.onGetUser();
     this.getImage();
   }
 
@@ -50,17 +46,6 @@ export class CustomerDetailComponent {
         }
       );
   }
-
-  onDeleteUser() {
-    this.customerService.deleteUser(this.id).subscribe(
-      (response) => {
-        this.router.navigate(['customers']);
-      },
-      (error: any) => console.log(error),
-      () => console.log('Done deleting user')
-    );
-  }
-
 
 
   protected readonly open = open;

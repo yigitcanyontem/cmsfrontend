@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import {CustomersService} from "../service/customers.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Customer} from "../interface/customer";
+import {Loginmodel} from "../interface/loginmodel";
+
+
 
 @Component({
   selector: 'app-customer-login',
@@ -14,13 +17,17 @@ export class CustomerLoginComponent {
   }
   onLogin(customerloginform: Customer) {
     this.customerService.login(customerloginform).subscribe(
-      (response) => {
-        localStorage.setItem('customerRole', String(response));
-        this.router.navigate(['customers']);
+      (response: Loginmodel) => {
+        localStorage.setItem('customerId', String(response.id));
+        localStorage.setItem('customerRole', response.role);
+        this.router.navigate(['home']);
+
       },
       (error: any) => console.log(error),
-      () => console.log('Loggged In')
+      () => console.log('Logged In')
     );
   }
+
+
 
 }
