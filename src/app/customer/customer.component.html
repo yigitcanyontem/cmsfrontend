@@ -4,7 +4,7 @@
     <div class="text-center p-5">
       <div class="mat-elevation-z8  ">
         <div class="table-responsive">
-          <table mat-table [dataSource]="dataSource" class="customer-table table table-dark  table-striped table-fit table-bordered table-hover align-middle " matSort #empTbSort="matSort">
+          <table mat-table [dataSource]="dataSource" class="customer-table table table-dark table-striped table-fit table-bordered table-hover align-middle " matSort #empTbSort="matSort">
             <ng-container matColumnDef="id">
               <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> ID </th>
               <td mat-cell *matCellDef="let customer"> {{customer.id}} </td>
